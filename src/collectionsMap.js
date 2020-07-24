@@ -8,11 +8,10 @@ module.exports = function(main_Node, struture) {
 	for(let name in struture){
 		let value = struture[name];
 
-		if (value){
+		if (value && typeof value == 'string'){
 			let multiple = value.match(/^\*/) ? true : false;
 			let parent   = value.match(/\(parent:([\w\d]+)\)/i);
 			
-
 			// ### PARENT
 			if (parent){
 				value  = value.replace(parent[0], '');
@@ -27,9 +26,9 @@ module.exports = function(main_Node, struture) {
 			// Ordem name, filter, multiple, parent
 			filterValidate.push({name: name, filter: selectors(value), multiple: multiple, parent: parent});
 			elements[name] =  multiple ? [] : null;
+		}else{
+			elements[name] = value;
 		}
-
-		elements[name] = null;
 	}
 
 	function getAllElements(element, elementParentName = null) {
