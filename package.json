@@ -1,6 +1,6 @@
 {
   "name": "collections-map",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Mapear coleções dos elementos do DOM.",
   "main": "src/index.js",
   "scripts": {
