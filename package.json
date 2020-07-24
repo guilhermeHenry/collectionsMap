@@ -1,0 +1,17 @@
+{
+  "name": "collectionsmap",
+  "version": "1.0.0",
+  "description": "Mapear coleções dos elementos do DOM.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guilhermeHenry/getAllElements.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guilhermeHenry/getAllElements/issues"
+  },
+  "homepage": "https://github.com/guilhermeHenry/getAllElements#readme"
+}
