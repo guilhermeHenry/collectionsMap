@@ -2,7 +2,7 @@
   "name": "collections-map",
   "version": "1.0.0",
   "description": "Mapear coleções dos elementos do DOM.",
-  "main": "src/collectionsMap.js",
+  "main": "src/index.js",
   "scripts": {
     "dev": "npx webpack -d --watch"
   },
