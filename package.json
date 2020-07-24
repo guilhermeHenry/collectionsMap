@@ -1,6 +1,6 @@
 {
   "name": "collections-map",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mapear coleções dos elementos do DOM.",
   "main": "src/index.js",
   "scripts": {
@@ -11,9 +11,9 @@
     "url": "git+https://github.com/guilhermeHenry/collectionsMap.git"
   },
   "keywords": [
-    "DOM", 
-    "HTML", 
-    "Colletions", 
+    "DOM",
+    "HTML",
+    "Colletions",
     "Elements",
     "Map"
   ],
