@@ -5,28 +5,32 @@ module.exports = function(main_Node, struture) {
 	const filterValidate = [];
 	const elements = {};
 
-	for(const name in struture){
-		let value	 = struture[name];
-		let multiple = value.match(/^\*/) ? true : false;
-		let parent   = value.match(/\(parent:([\w\d]+)\)/i);
-		
+	for(let name in struture){
+		let value = struture[name];
 
-		// ### PARENT
-		if (parent){
-			value  = value.replace(parent[0], '');
-			parent = parent[1];
+		if (value){
+			let multiple = value.match(/^\*/) ? true : false;
+			let parent   = value.match(/\(parent:([\w\d]+)\)/i);
+			
+
+			// ### PARENT
+			if (parent){
+				value  = value.replace(parent[0], '');
+				parent = parent[1];
+			}
+
+			// ### CLEAR
+			if (multiple){
+				value = value.replace('*', '');
+			}
+
+			// Ordem name, filter, multiple, parent
+			filterValidate.push({name: name, filter: selectors(value), multiple: multiple, parent: parent});
+			elements[name] =  multiple ? [] : null;
 		}
 
-		// ### CLEAR
-		if (multiple){
-			value = value.replace('*', '');
-		}
-
-		// Ordem name, filter, multiple, parent
-		filterValidate.push({name: name, filter: selectors(value), multiple: multiple, parent: parent});
-		elements[name] =  multiple ? [] : null;
+		elements[name] = null;
 	}
-	
 
 	function getAllElements(element, elementParentName = null) {
 		let parentName = null;

@@ -1,17 +1,28 @@
 {
-  "name": "collectionsmap",
+  "name": "collections-map",
   "version": "1.0.0",
   "description": "Mapear coleções dos elementos do DOM.",
-  "main": "index.js",
-  "scripts": {},
+  "main": "src/collectionsMap.js",
+  "scripts": {
+    "dev": "npx webpack -d --watch"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/guilhermeHenry/getAllElements.git"
+    "url": "git+https://github.com/guilhermeHenry/collectionsMap.git"
   },
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "DOM", 
+    "HTML", 
+    "Colletions", 
+    "Elements",
+    "Map"
+  ],
+  "author": {
+    "name": "Guilherme Henrique"
+  },
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/guilhermeHenry/getAllElements/issues"
+    "url": "https://github.com/guilhermeHenry/collectionsMap/issues"
   },
-  "homepage": "https://github.com/guilhermeHenry/getAllElements#readme"
+  "homepage": "https://github.com/guilhermeHenry/collectionsMap"
 }
