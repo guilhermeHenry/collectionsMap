@@ -1,9 +1,11 @@
 const selectors = require('./selectors');
 const validator = require('./validator');
 
-module.exports = function(main_Node, struture) {
-	const filterValidate = [];
-	const elements = {};
+module.exports = function(elementParent, struture) {
+	const collections = {
+		filters: [],
+		elements: {}
+	};
 
 	for(let name in struture){
 		let value = struture[name];
@@ -19,22 +21,23 @@ module.exports = function(main_Node, struture) {
 			}
 
 			// ### CLEAR
-			if (multiple){
-				value = value.replace('*', '');
-			}
+			if (multiple){value = value.replace('*', '')}
 
-			// Ordem name, filter, multiple, parent
-			filterValidate.push({name: name, filter: selectors(value), multiple: multiple, parent: parent});
-			elements[name] =  multiple ? [] : null;
+			let filter = selectors(value);
+
+			if (filter || parent){
+				collections.filters.push({name: name, filter: filter, multiple: multiple, parent: parent});
+				collections.elements[name] =  multiple ? [] : null;
+			}
 		}else{
-			elements[name] = value;
+			collections.elements[name] = value;
 		}
 	}
 
-	function getAllElements(element, elementParentName = null) {
+	const map = function (element, elementParentName = null) {
 		let parentName = null;
 
-		filterValidate.forEach(function ({name, filter, multiple, parent}) {
+		collections.filters.forEach(function ({name, filter, multiple, parent}) {
 			let ruleFilter = filter ? validator(element, filter) : true;
 			let ruleParent  = !parent ? true : false;
 
@@ -49,9 +52,9 @@ module.exports = function(main_Node, struture) {
 
 				// multiple
 				if (multiple){
-					elements[name].push(element);
+					collections.elements[name].push(element);
 				}else{
-					elements[name] = element;
+					collections.elements[name] = element;
 				}
 			}
 		});
@@ -62,13 +65,13 @@ module.exports = function(main_Node, struture) {
 
 		if (total > 0){
 			for(var i = 0; i < total; i++){
-				getAllElements(children[i], parentName);
+				map(children[i], parentName);
 			}
 		}
 	}
 
 	// ## EXE
-	getAllElements(main_Node);
+	map(elementParent);
 
-	return elements;
+	return collections.elements;
 }

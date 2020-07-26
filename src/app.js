@@ -1,6 +1,6 @@
 const collectionsMap = require('./collectionsMap');
 const result = collectionsMap(document.getElementById('state1'), {
-	output: null,
+	output: '*',
 	selectMainNode: 'div.select#state1',
 	optionsContainer: '.options',
 	option:  '*(parent:options)[class=option]',

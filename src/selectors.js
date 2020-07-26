@@ -2,9 +2,9 @@ module.exports = function (data) {
 	let parse = [];
 
 	[
-		['id',      /#([\w\d]+)/i],
+		['id',      /#([\w\d-_]+)/i],
 		['tagname', /^[\w\d]+/i],
-		['class',   /\.[\w\d]+/gi],
+		['class',   /\.[\w\d-_]+/gi],
 		['attr',    /\[[\w\d]+([\^\$\~\*]?=[\w\d]+)?\]/gi]
 	].forEach(function ([name, regex]) {
 		let search = data.match(regex);
